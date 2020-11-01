@@ -15,7 +15,8 @@ class Category {
   final ColorSwatch color;
   final List<Unit> units;
   // TODO: Change this to a String path to the image asset
-  final IconData iconLocation;
+  final String iconLocation;
+  // final IconData iconLocation;
 
   /// Information about a [Category].
   ///

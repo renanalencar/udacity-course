@@ -11,6 +11,9 @@ import 'package:meta/meta.dart';
 import 'package:task_04_navigation/converter_route.dart';
 import 'package:task_04_navigation/unit.dart';
 
+import 'converter_route.dart';
+import 'converter_route.dart';
+
 // We use an underscore to indicate that these variables are private.
 // See https://www.dartlang.org/guides/language/effective-dart/design#libraries
 final _rowHeight = 100.0;
@@ -48,6 +51,22 @@ class Category extends StatelessWidget {
   /// Navigates to the [ConverterRoute].
   void _navigateToConverter(BuildContext context) {
     // TODO: Using the Navigator, navigate to the [ConverterRoute]
+    Navigator.of(context).push(MaterialPageRoute<Null>(
+      builder: (context) {
+        return Scaffold(
+          appBar: AppBar(
+            elevation: 1.0,
+            title: Text(
+              name,
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            centerTitle: true,
+            backgroundColor: color,
+          ),
+          body: ConverterRoute(units: units, color: color),
+        );
+      },
+    ));
   }
 
   /// Builds a custom widget that shows [Category] information.
@@ -70,9 +89,7 @@ class Category extends StatelessWidget {
           // We can use either the () => function() or the () { function(); }
           // syntax.
           // TODO: Update this onTap property to call _navigateToConverter()
-          onTap: () {
-            print('I was tapped!');
-          },
+          onTap: () => _navigateToConverter(context),
           child: Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
@@ -93,7 +110,7 @@ class Category extends StatelessWidget {
                   child: Text(
                     name,
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline,
+                    style: Theme.of(context).textTheme.headline5,
                   ),
                 ),
               ],
